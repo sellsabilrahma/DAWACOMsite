@@ -1,19 +1,18 @@
-// 1. Sélection des éléments fixes
 const dropdownBtn = document.getElementById("drop-text");
 const list = document.getElementById("list");
 const span = document.getElementById("span");
 
-// 2. Ouvrir/Fermer le menu Wilayas
+
 dropdownBtn.onclick = function(e) {
     e.stopPropagation();
     list.classList.toggle("list-show");
 };
 
-// 3. Charger les Wilayas et Communes depuis le JSON
+
 fetch('./wilayas.json')
     .then(res => res.json())
     .then(data => {
-        list.innerHTML = ""; // On vide la liste HTML
+        list.innerHTML = "";
 
         data.forEach(wilaya => {
             let liWilaya = document.createElement("li");
@@ -29,21 +28,21 @@ fetch('./wilayas.json')
                 liCommune.className = "sub-list-item";
                 liCommune.innerText = commune;
 
-                // --- LE CLIC CRUCIAL EST ICI ---
+                
                 liCommune.onclick = function(e) {
                     e.stopPropagation();
                     console.log("Clic détecté sur :", commune);
-                    span.innerText = commune; // Change le texte du bouton
-                    list.classList.remove("list-show"); // Ferme le menu
+                    span.innerText = commune; 
+                    list.classList.remove("list-show"); 
                     
-                    // APPEL DE LA FONCTION DE RECHERCHE
+                   
                     chercherPharmacies(commune); 
                 };
 
                 subUl.appendChild(liCommune);
             });
 
-            // Ouvrir les communes au clic sur la Wilaya
+            
             liWilaya.onclick = function(e) {
                 e.stopPropagation();
                 subUl.style.display = (subUl.style.display === "none") ? "block" : "none";
@@ -54,9 +53,9 @@ fetch('./wilayas.json')
         });
     });
 
-// 4. La fonction qui affiche la carte de la pharmacie
+
 async function chercherPharmacies(nomCommune) {
-    // On force en MAJUSCULE pour correspondre à la base de données
+    
     const communeMaj = nomCommune.toUpperCase();
     const resultsDiv = document.getElementById("results-container");
     

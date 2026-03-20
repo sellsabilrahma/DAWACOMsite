@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <title>Pharmaciesmap</title>
+    <link rel="stylesheet" href="stylesmap.css">
+</head>
+
+<body>
+    <header>
+    <h2 class="logo">Dawacom</h2>
+    <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="pharmaciemap.html">Pharmacies</a>
+        <a href="Parapharmacies.html">Parapharmacies</a>
+    </nav>
+</header>
+    <div class="main-container">
+        <div class="two-column-wrapper">
+            
+            <div class="selection-column">
+                <h1>Chercher une pharmacie de garde</h1>
+
+                <div class="search-bar">
+                    <div class="dropdown">
+                        <div id="drop-text" class="dropdown-text">
+                            <span id="span">Choisir une Wilaya</span>
+                            <i id="icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <ul id="list" class="dropdown-list">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div id="results-container" class="results-area">
+                    
+                </div>
+            </div>
+
+            
+           <div class="map-wrapper">
+                <div class="map-wrapper">
+                <iframe id="google-map" src="https://www.google.com/maps/d/embed?mid=1q_KL0ZmD5vK7vLS4IzaB8W-lhAoqkxw&ehbc=2E312F" width="100%" height="480"></iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="scriptpharma.js"></script>
+    
+</body>
+</html>

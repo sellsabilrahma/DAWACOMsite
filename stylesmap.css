@@ -1,4 +1,4 @@
-/* Importation des polices */
+
 @import url('https://fonts.googleapis.com');
 
 * {
@@ -9,15 +9,15 @@
 }
 
 body {
-    display: block; /* Important pour laisser le header en haut */
+    display: block; 
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/dawa.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('dawa.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    padding-top: 100px; /* Espace pour le header fixe */
+    padding-top: 100px;
 }
 
-/* --- HEADER & NAVIGATION --- */
+
 header {
     position: fixed;
     top: 0;
@@ -63,7 +63,7 @@ header {
     transform: scaleX(1);
 }
 
-/* --- LAYOUT (DEUX COLONNES) --- */
+
 .two-column-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -79,7 +79,7 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* --- DROPDOWN (RECHERCHE) --- */
+
 .search-bar {
     margin-bottom: 30px;
 }
@@ -105,7 +105,7 @@ h1 {
     padding: 1rem 1.5rem;
 }
 
-/* La liste principale (Wilayas) */
+
 .dropdown-list {
     position: absolute;
     top: 4.5rem;
@@ -121,7 +121,7 @@ h1 {
     list-style: none;
 }
 
-/* Classe activée par le JS */
+
 .list-show {
     max-height: 500px;
     overflow-y: auto;
@@ -141,7 +141,7 @@ h1 {
     background-color: #f0f0f0;
 }
 
-/* --- SOUS-LISTE (COMMUNES) --- */
+
 .sub-list {
     display: none; /* Toujours géré par le JS au clic */
     list-style: none;
@@ -217,13 +217,13 @@ iframe {
     border: none;
 }
 
-/* Animation */
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 900px) {
     .two-column-wrapper {
         grid-template-columns: 1fr;

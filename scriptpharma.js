@@ -3,7 +3,7 @@ const list = document.getElementById("list");
 const span = document.getElementById("span");
 
 
-const BACKEND_URL = "https://dawa-backend.onrender.com";
+const BACKEND_URL = "https://dawa-backend.onrender.com{communeMaj}";
 
 dropdownBtn.onclick = function(e) {
     e.stopPropagation();

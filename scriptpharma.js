@@ -58,35 +58,33 @@ fetch('./wilayas.json')
 async function chercherPharmacies(nomCommune) {
     const communeMaj = nomCommune.toUpperCase();
     const resultsDiv = document.getElementById("results-container");
-    
+
     if (!resultsDiv) return console.error("ID results-container introuvable !");
 
-    resultsDiv.innerHTML = "<p style='color:white;'>Recherche en cours à " + communeMaj + "...</p>";
+    resultsDiv.innerHTML = "<p>Recherche en cours...</p>";
 
     try {
-        
+        // Fetch depuis le backend Render
         const response = await fetch(`${BACKEND_URL}/api/garde/${communeMaj}`);
-        
-        
         if (!response.ok) throw new Error("Erreur réseau ou commune non trouvée");
-        
+
         const pharmacies = await response.json();
-        resultsDiv.innerHTML = ""; 
+        resultsDiv.innerHTML = ""; // on vide avant affichage
 
         if (!pharmacies || pharmacies.length === 0) {
-            resultsDiv.innerHTML = `<p style='color:white;'>Aucune pharmacie de garde trouvée à ${communeMaj} pour le moment.</p>`;
+            resultsDiv.innerHTML = `<p>Aucune pharmacie de garde trouvée à ${communeMaj}.</p>`;
             return;
         }
 
         pharmacies.forEach(ph => {
-            
             resultsDiv.innerHTML += `
-                <div class="pharmacie-card" style="border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 8px; background: rgba(255,255,255,0.1);">
-                    <h4 style="color: #2ecc71; margin-top:0;">${ph.pharmacieName || 'Nom inconnu'}</h4>
-                    <p style="color: white;"><i class="fa-solid fa-location-dot"></i> ${ph.pharmacieadresse || 'Adresse non renseignée'}</p>
-                    <p style="color: white;"><i class="fa-solid fa-phone"></i> ${ph.pharmaciePhone || 'Non renseigné'}</p>
-                    ${ph.pharmaciePhone ? `<a href="tel:${ph.pharmaciePhone}" class="btn-call" style="display:inline-block; padding:8px 15px; background:#2ecc71; color:white; text-decoration:none; border-radius:5px;">Appeler</a>` : ''}
-                </div>`;
+                <div class="pharmacie-card">
+                    <h4>${ph.pharmacieName || 'Nom inconnu'}</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> ${ph.pharmacieadresse || 'Adresse non renseignée'}</p>
+                    <p><i class="fa-solid fa-phone"></i> ${ph.pharmaciePhone || 'Non renseigné'}</p>
+                    ${ph.pharmaciePhone ? `<a href="tel:${ph.pharmaciePhone}" class="btn-call">Appeler</a>` : ''}
+                </div>
+            `;
         });
     } catch (err) {
         console.error("Erreur fetch pharmacies:", err);

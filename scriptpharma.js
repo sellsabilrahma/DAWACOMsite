@@ -64,8 +64,9 @@ async function chercherPharmacies(nomCommune) {
     resultsDiv.innerHTML = "<p style='color:white;'>Recherche en cours à " + communeMaj + "...</p>";
 
     try {
-        // APPEL AU BACKEND RENDER
-        const response = await fetch(`${BACKEND_URL}/${communeMaj}`);
+        
+        const response = await fetch(`${BACKEND_URL}/api/garde/${communeMaj}`);
+        
         
         if (!response.ok) throw new Error("Erreur réseau ou commune non trouvée");
         
